@@ -3,6 +3,10 @@ import 'package:movies/core/config/constants.dart';
 import 'package:movies/network/Api/api_manger.dart';
 import 'package:movies/network/Fire-base/fire-base-manger.dart';
 
+import '../../../Domain/Entities/popular_entites.dart';
+import '../../../core/config/pages_Route_Name.dart';
+import '../../../main.dart';
+
 class watchlistsscreen extends StatelessWidget {
   const watchlistsscreen({Key? key});
 
@@ -49,7 +53,23 @@ class watchlistsscreen extends StatelessWidget {
                                 color: Color(0XFF282A28),
                                 width: MediaQuery.of(context).size.width * 0.3,
                                 height: constants.mediaquery.height * 0.22,
-                                child: Image.network(data[index].image, fit: BoxFit.fill),
+                                child: InkWell(
+                                    onTap: () {
+                                      navigatorkey.currentState!.pushNamed(
+                                          PageRouteName.movieView,
+                                          arguments: PopularEntity(
+                                              state: false,
+                                              id: data[index].id ,
+                                              backDrop: data[index].backDrop,
+                                              poster: data[index].image,
+                                              title: data[index].name,
+                                              overview: data[index].description,
+                                              categories: data[index].categories,
+                                              date: data[index].year,
+                                              voteAverage:
+                                              data[index].rate));
+                                    },
+                                    child: Image.network(data[index].image, fit: BoxFit.fill)),
                               ),
                               InkWell(
                                   onTap: (){

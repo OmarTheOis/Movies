@@ -16,12 +16,13 @@ class homescreen extends StatefulWidget {
 class _homescreenState extends State<homescreen> {
   int currentindex=0;
 
-  List<Widget>navigatedpages=[home(),searchsscreen(),browsesscreen(),watchlistsscreen()];
+  List<Widget>navigatedpages=[home(),SearchScreen() as Widget,browsesscreen(),watchlistsscreen()];
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: navigatedpages[currentindex],
+      body:navigatedpages[currentindex],
       bottomNavigationBar: BottomNavigationBar(currentIndex: currentindex,
         onTap: (index){
           currentindex=index;
@@ -31,7 +32,8 @@ class _homescreenState extends State<homescreen> {
         items: [
         BottomNavigationBarItem(icon: Icon(Icons.home),
             label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.search),
+        BottomNavigationBarItem(icon: InkWell(
+            child: Icon(Icons.search)),
             label: "Search"),
         BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/browseicon.png")),
             label: "BROWSE"),

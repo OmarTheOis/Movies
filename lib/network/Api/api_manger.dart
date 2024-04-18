@@ -64,7 +64,7 @@ class ApiManager {
    return NewReleaseList;
    }
 
-   static Future<List<RecommendedEntities>> recomended() async {
+   static Future<List<PopularEntity>> recomended() async {
 
    const String url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
    const String token = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzODg1OTBiMTM5NjBlZTk3MDEwYmFmMTY1ODdmNTcxMCIsInN1YiI6IjY2MGMxN2FiMTQ5NTY1MDE3ZGJiM2RjMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.o9bZiJj-Bi7UAOt71PfDSzeP-bMp3XpUBrav2JNrY0E';
@@ -76,12 +76,12 @@ class ApiManager {
      },
 
    );
-   List<RecommendedEntities> RecomendedList =[];
+   List<PopularEntity> RecomendedList =[];
    if(response.statusCode==200){
      var data = json.decode(response.body);
      List sources = data["results"];
      for (var i in sources){
-       RecomendedList.add(RecomendedModel.fromJson(i));
+       RecomendedList.add(PopularModel.fromJson(i));
      }
    }
 
@@ -153,12 +153,12 @@ class ApiManager {
      var data = json.decode(response.body);
      List sources = data["results"];
      for (var i in sources){
-       if(i["genre_ids"].contains(id)){
          popularList.add(PopularModel.fromJson(i));
-       }
-     }
-   }
+       }}
+   print(popularList);
    return popularList;
+
+
 
  }
 

@@ -5,7 +5,6 @@ class FireStoreEntity {
   String image;
   String backDrop;
   String description;
-  bool? state =false;
   double rate;
   List<dynamic> categories;
 
@@ -18,6 +17,5 @@ class FireStoreEntity {
     required this.image,
     required this.backDrop,
     required this.description,
-    required this.state,
     required this.categories});
 }

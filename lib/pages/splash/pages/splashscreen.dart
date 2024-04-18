@@ -17,13 +17,9 @@ class splashscreen extends StatelessWidget {
           pushReplacementNamed(PageRouteName.homescreen);
         });
     return Container(
-        decoration: BoxDecoration(
-          color: Colors.black,
-          image: DecorationImage(
-            image: AssetImage("assets/images/Splash.png"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        alignment: Alignment.center,
+        color: Color(0xFF121312),
+      child: Image.asset("assets/images/Splash.png"),
     );
   }
 }

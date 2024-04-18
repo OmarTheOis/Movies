@@ -9,7 +9,6 @@ class FireStoreModel extends FireStoreEntity {
     required super.image,
     required super.backDrop,
     required super.description,
-    required super.state,
     required super.categories});
 
   factory FireStoreModel.fromJson(Map<String, dynamic> json) =>
@@ -20,7 +19,6 @@ class FireStoreModel extends FireStoreEntity {
           image: json['poster'],
           backDrop: json['backDrop'],
           description: json['description'],
-          state: json['state'],
           categories: json['category'],);
 
   toFireStore(){
@@ -32,7 +30,6 @@ class FireStoreModel extends FireStoreEntity {
       'poster': image,
       'backDrop': backDrop,
       'description': description,
-     'state': state,
       'category': categories,
     };
   }

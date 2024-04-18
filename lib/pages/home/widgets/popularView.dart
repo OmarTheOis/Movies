@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:movies/core/config/constants.dart';
 import 'package:movies/network/Api/api_manger.dart';
@@ -19,10 +21,10 @@ class PopularView extends StatefulWidget {
 }
 
 class _PopularViewState extends State<PopularView> {
-
+  List<int> ids=[];
   @override
   Widget build(BuildContext context) {
-
+   if(ids.isEmpty) getState();
     return FutureBuilder(
       future: ApiManager.getPopular(),
       builder: (context, snapshot) {
@@ -34,11 +36,13 @@ class _PopularViewState extends State<PopularView> {
         }
 
         List<PopularEntity> data = snapshot.data ?? [];
+
         return Container(
           height: constants.mediaquery.height * 0.32,
           child: PageView.builder(
             itemCount: data.length,
             itemBuilder: (context, index) {
+
               return Container(
                 width: MediaQuery
                     .of(context)
@@ -71,9 +75,11 @@ class _PopularViewState extends State<PopularView> {
                             children: [
                               InkWell(
                                 onTap: () {
+
                                   navigatorkey.currentState!.pushNamed(
                                       PageRouteName.movieView,
                                       arguments: PopularEntity(
+                                          state: false,
                                           id: data[index].id ,
                                           backDrop: data[index].backDrop,
                                           poster: data[index].poster,
@@ -109,9 +115,8 @@ class _PopularViewState extends State<PopularView> {
                                   child:
                                   InkWell(
                                       onTap: () {
-                                        if(data[index].state!=true) {
-                                          data[index].changeState(); // Call the changeState method
-                                          setState(() {});
+                                        getState();
+                                        // Call the changeState method
                                            var movie = FireStoreModel(
                                               id: data[index].id,
                                               rate: data[index].voteAverage,
@@ -120,18 +125,17 @@ class _PopularViewState extends State<PopularView> {
                                               image: data[index].poster,
                                               backDrop: data[index].backDrop,
                                               description: data[index].overview,
-                                              state: true,
                                               categories:
                                                   data[index].categories);
                                           FireBaseManager().addMovie(movie);
 
-                                        }
+
                                       },
-                                      child:data[index].state!=true? Image.asset(
-                                          "assets/images/bookmark.png")
+                                      child:ids.contains(data[index].id)? Image.asset(
+                                          "assets/images/bookmarkSelected.png")
                                   :
                                       Image.asset(
-                                          "assets/images/bookmarkSelected.png")
+                                          "assets/images/bookmark.png")
                                   ))
                             ],
                           ),
@@ -180,5 +184,16 @@ class _PopularViewState extends State<PopularView> {
         );
       },
     );
+  }
+  getState () async{
+    var response = await FireBaseManager().getFromFireStoreTwo();
+    for(var i in response){
+      ids.add(i.id);
+      setState(() {
+      });
+    }
+    print("gggggggggggggggggggggggggggggggggggggggggggggg$ids");
+
+
   }
 }

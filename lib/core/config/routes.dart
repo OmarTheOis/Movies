@@ -21,10 +21,7 @@ class Routes{
         return MaterialPageRoute(builder: (Context)=>const homescreen(),
           settings: settings,
         );
-      case PageRouteName.search:
-        return MaterialPageRoute(builder: (Context)=> searchsscreen(),
-          settings: settings,
-        );
+
       case PageRouteName.browse:
         return MaterialPageRoute(builder: (Context)=>const browsesscreen(),
           settings: settings,
@@ -34,7 +31,7 @@ class Routes{
           settings: settings,
         );
       case PageRouteName.movieView:
-        return MaterialPageRoute(builder: (Context)=>const CustomMovieView(),
+        return MaterialPageRoute(builder: (Context)=>CustomMovieView(),
           settings: settings,
         );
       case PageRouteName.categoryView:

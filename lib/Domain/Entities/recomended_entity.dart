@@ -1,4 +1,5 @@
 class RecommendedEntities{
+
   String image;
   String title;
   String publishAt;

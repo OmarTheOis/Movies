@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/Domain/Entities/popular_entites.dart';
 import 'package:movies/Domain/Entities/recomended_entity.dart';
 import 'package:movies/core/config/constants.dart';
 import 'package:movies/network/Api/api_manger.dart';
@@ -20,7 +21,7 @@ class SecondContainer extends StatelessWidget {
               child: Text(snapshot.error.toString()),
             );
           }
-          List<RecommendedEntities> data = snapshot.data ?? [];
+          List<PopularEntity> data = snapshot.data ?? [];
           return Container(
                 margin: EdgeInsets.all(4),
                 padding: EdgeInsets.only(left: 10,top: 5),
@@ -36,7 +37,7 @@ class SecondContainer extends StatelessWidget {
                       child: ListView.builder(
                         itemCount: data.length,
                           scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) =>  RecomendedItem(image: data[index].image, name: data[index].title, price: data[index].publishAt, reviews: data[index].reviews),),
+                          itemBuilder: (context, index) =>  RecomendedItem(categories: data[index].categories,backDrop: data[index].backDrop,overview: data[index].overview,id: data[index].id,image: data[index].poster, name: data[index].title, date: data[index].date, reviews: data[index].voteAverage),),
                     )
                   ],
                 ),

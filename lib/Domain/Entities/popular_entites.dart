@@ -1,6 +1,6 @@
 class PopularEntity{
   int id;
-  bool? state;
+  bool state;
   String backDrop;
   String poster;
   String title;
@@ -16,7 +16,7 @@ class PopularEntity{
   PopularEntity(
       {
         required this.id,
-        this.state,
+        required this.state,
         this.categories,
         required this.backDrop,
         required this.poster,
