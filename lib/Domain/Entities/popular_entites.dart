@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class PopularEntity{
   int id;
   bool state;
@@ -8,13 +10,12 @@ class PopularEntity{
   double voteAverage;
   String date;
   var categories;
+  String? context;
 
-  changeState(){
-    state = true;
-  }
 
   PopularEntity(
       {
+        this.context,
         required this.id,
         required this.state,
         this.categories,

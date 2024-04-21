@@ -5,9 +5,14 @@ import 'package:movies/pages/home/widgets/Second-Container.dart';
 import '../widgets/custom_container.dart';
 import '../widgets/popularView.dart';
 
-class home extends StatelessWidget {
+class home extends StatefulWidget {
   const home({super.key});
 
+  @override
+  State<home> createState() => _homeState();
+}
+
+class _homeState extends State<home> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

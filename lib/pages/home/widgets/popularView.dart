@@ -74,11 +74,12 @@ class _PopularViewState extends State<PopularView> {
                             alignment: Alignment.topLeft,
                             children: [
                               InkWell(
-                                onTap: () {
+                                onTap: () async{
 
                                   navigatorkey.currentState!.pushNamed(
                                       PageRouteName.movieView,
                                       arguments: PopularEntity(
+                                         context: PageRouteName.home,
                                           state: false,
                                           id: data[index].id ,
                                           backDrop: data[index].backDrop,
@@ -89,6 +90,7 @@ class _PopularViewState extends State<PopularView> {
                                           date: data[index].date,
                                           voteAverage:
                                           data[index].voteAverage));
+
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(

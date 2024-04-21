@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movies/Domain/Entities/popular_entites.dart';
 import 'package:movies/core/config/constants.dart';
+import 'package:movies/core/config/pages_Route_Name.dart';
+import 'package:movies/main.dart';
 import 'package:movies/network/Api/api_manger.dart';
 import 'package:movies/pages/home/widgets/Second-Container.dart';
 import 'package:movies/pages/home/widgets/category_item.dart';
@@ -164,15 +166,15 @@ class _CustomMovieViewState extends State<CustomMovieView> {
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
-                                          SingleChildScrollView(
+                                            SizedBox(
+                                            height: constants.mediaquery.height*0.08,
+                                          child:SingleChildScrollView(
                                             scrollDirection: Axis.vertical,
                                             child: Text(
                                               args.overview,
                                               style: constants.theme.textTheme.bodyMedium!.copyWith(),
-                                              maxLines: 3, // Example of setting max lines
-                                              overflow: TextOverflow.ellipsis,
                                             ),
-                                          ),
+                                          )),
                                         ],
                                       ),
                                     );

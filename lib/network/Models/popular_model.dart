@@ -1,7 +1,7 @@
 import '../../Domain/Entities/popular_entites.dart';
 
 class PopularModel extends PopularEntity{
-  PopularModel({required super.state,required super.id,super.categories,required super.date,required super.backDrop, required super.poster, required super.title, required super.overview, required super.voteAverage});
+  PopularModel({super.context,required super.state,required super.id,super.categories,required super.date,required super.backDrop, required super.poster, required super.title, required super.overview, required super.voteAverage});
 
 
 

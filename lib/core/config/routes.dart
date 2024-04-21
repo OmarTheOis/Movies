@@ -7,6 +7,7 @@ import 'package:movies/pages/splash/pages/splashscreen.dart';
 
 import '../../pages/browse/pages/category_Movies.dart';
 import '../../pages/home/pages/Movie_View.dart';
+import '../../pages/home/pages/home_navbar.dart';
 import '../../pages/home/widgets/Cutom_Movie_View.dart';
 import '../../pages/watchlist/pages/watchlist.dart';
 
@@ -21,7 +22,10 @@ class Routes{
         return MaterialPageRoute(builder: (Context)=>const homescreen(),
           settings: settings,
         );
-
+      case PageRouteName.homescreen:
+        return MaterialPageRoute(builder: (Context)=>const home(),
+          settings: settings,
+        );
       case PageRouteName.browse:
         return MaterialPageRoute(builder: (Context)=>const browsesscreen(),
           settings: settings,

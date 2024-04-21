@@ -24,7 +24,6 @@ class SecondContainer extends StatelessWidget {
           List<PopularEntity> data = snapshot.data ?? [];
           return Container(
                 margin: EdgeInsets.all(4),
-                padding: EdgeInsets.only(left: 10,top: 5),
                 alignment: Alignment.topLeft,
                 color: Color(0XFF282A28),
                 width:constants.mediaquery.width,
